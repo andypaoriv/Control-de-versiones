@@ -15,6 +15,7 @@ public class CalcularArea extends JFrame {
 	private JTextField textFieldBase;
 	private JTextField textField_Altura;
 	private JLabel lblResultado;
+	private JTextField textFieldRadio;
 
 	/**
 	 * Launch the application.
@@ -83,6 +84,32 @@ public class CalcularArea extends JFrame {
 		});
 		btnNewButton.setBounds(108, 130, 173, 23);
 		contentPane.add(btnNewButton);
+
+		JButton btnCirculo = new JButton("Area Circulo");
+		btnCirculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		try {
+                    double radio = Double.parseDouble(textFieldRadio.getText());
+                    double area = Math.PI * Math.pow(radio, 2);
+                    
+                    lblResultado.setText("Área del Círculo: " + String.format("%.3f", area));
+                } catch (NumberFormatException ex) {
+                	 lblResultado.setText("Por favor, ingrese números válidos.");
+                }
+
+			}
+		});
+		btnCirculo.setBounds(108, 205, 173, 23);
+		contentPane.add(btnCirculo);
+		
+		JLabel lblRadio = new JLabel("Radio:");
+		lblRadio.setBounds(36, 183, 46, 14);
+		contentPane.add(lblRadio);
+		
+		textFieldRadio = new JTextField();
+		textFieldRadio.setColumns(10);
+		textFieldRadio.setBounds(108, 174, 86, 20);
+		contentPane.add(textFieldRadio);
 		
 		
 	}
