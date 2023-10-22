@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -46,20 +47,20 @@ public class CalcularArea extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Base:");
-		lblNewLabel.setBounds(36, 55, 46, 14);
+		lblNewLabel.setBounds(36, 21, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Altura:");
-		lblNewLabel_1.setBounds(36, 90, 46, 14);
+		lblNewLabel_1.setBounds(36, 55, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		textFieldBase = new JTextField();
-		textFieldBase.setBounds(108, 52, 86, 20);
+		textFieldBase.setBounds(108, 18, 86, 20);
 		contentPane.add(textFieldBase);
 		textFieldBase.setColumns(10);
 		
 		textField_Altura = new JTextField();
-		textField_Altura.setBounds(108, 84, 86, 20);
+		textField_Altura.setBounds(108, 52, 86, 20);
 		contentPane.add(textField_Altura);
 		textField_Altura.setColumns(10);
 		
@@ -82,7 +83,7 @@ public class CalcularArea extends JFrame {
 			        }
 			    }
 		});
-		btnNewButton.setBounds(108, 130, 173, 23);
+		btnNewButton.setBounds(36, 88, 200, 23);
 		contentPane.add(btnNewButton);
 
 		JButton btnCirculo = new JButton("Area Circulo");
@@ -99,7 +100,7 @@ public class CalcularArea extends JFrame {
 
 			}
 		});
-		btnCirculo.setBounds(108, 205, 173, 23);
+		btnCirculo.setBounds(46, 216, 173, 23);
 		contentPane.add(btnCirculo);
 		
 		JLabel lblRadio = new JLabel("Radio:");
@@ -110,6 +111,28 @@ public class CalcularArea extends JFrame {
 		textFieldRadio.setColumns(10);
 		textFieldRadio.setBounds(108, 174, 86, 20);
 		contentPane.add(textFieldRadio);
+		
+		JButton btnPerimetro = new JButton("Perimetro");
+		btnPerimetro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			try {
+				double lado = Double.parseDouble(textFieldBase.getText());
+				double base = Double.parseDouble(textFieldBase.getText());
+                double altura = Double.parseDouble(textField_Altura.getText());
+                
+                double perimetroCuadrado = 4 * lado;
+                double perimetroRectangulo = 2 * (base + altura);
+                
+                JOptionPane.showMessageDialog(null, "Perímetro cuadrado: " + perimetroCuadrado);
+                JOptionPane.showMessageDialog(null, "Perímetro rectángulo: " + perimetroRectangulo);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Error: los valores deben ser números", "Error", JOptionPane.ERROR_MESSAGE);
+            
+			}
+			}
+		});
+		btnPerimetro.setBounds(75, 125, 107, 23);
+		contentPane.add(btnPerimetro);
 		
 		
 	}
